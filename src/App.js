@@ -3,14 +3,14 @@ import ReactPaginate from 'react-paginate';
 import Loader from './Loader/Loader';
 import Table from './Table/Table';
 import DetailRowView from './DetailRowView/DetailRowView';
-//import ModeSelector from './ModeSelector/ModeSelector';
+
 import TableSearch from './TableSearch/TableSearch';
 import _ from 'lodash';
 
 
 class App extends Component {
   state ={
-    //isModeSelected: false,
+    
     isLoading: true,
     data: [],
     search: '',
