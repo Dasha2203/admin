@@ -40,8 +40,8 @@ export default props => (
           <td>{item.email}</td>
           <td>{item.phone}</td>
           <td className="del-cell">
-          <button type="button" style={{"background":"rgb(40, 3, 253)","color":"white","border-radius":"5px","border":"0px"}}>X</button>
-        </td>
+          <button type="button" onClick={props.onDeleteSelect.bind(null,item)} style={{"background":"rgb(40, 3, 253)","color":"white","border-radius":"5px","border":"0px"}}>X</button>
+          </td>
         </tr>
       ))}
     </tbody>

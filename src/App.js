@@ -37,14 +37,6 @@ class App extends Component {
     this.setState({ data, sort, sortField })
   }
 
-  // modeSelectHandler = url => {
-  //   // console.log(url)
-  //   this.setState({
-  //     isModeSelected: true,
-  //     isLoading: true,
-  //   })
-  //   this.fetchData(url)
-  // }
   async componentDidMount() {
     const response = await fetch(`http://www.filltext.com/?rows=1000&id={number|1000}&firstName={firstName}&delay=3&lastName={lastName}&email={email}&phone={phone|(xxx)xxx-xx-xx}&address={addressObject}&description={lorem|32}`)
     const data = await response.json();
@@ -90,16 +82,22 @@ class App extends Component {
     return result
   }
 
+  onDeleteSelect = row=> {
+    console.log(row);
+    let newData = this.state.data;
+    console.log(newData);
+    let foundIndex = newData.findIndex(el => el === row);
+    console.log(foundIndex)
+
+     newData  = newData.splice(foundIndex,1);
+     console.log(newData);
+    // this.setState({
+    //   data: newData,
+    // });
+  }
+
   render() {
     const pageSize = 50;
-    // if(!this.state.isModeSelected){
-    //   return (
-    //     <div className="container">
-    //       <ModeSelector onSelect={this.modeSelectHandler}/>
-    //     </div>
-    //   )
-    // }
-   
     const filteredData = this.getFilteredData();
     // debugger
     const pageCount = Math.ceil(filteredData.length / pageSize)
@@ -119,6 +117,7 @@ class App extends Component {
               sort={this.state.sort}
               sortField={this.state.sortField}
               onRowSelect={this.onRowSelect}
+              onDeleteSelect={this.onDeleteSelect}
             />
           </React.Fragment>
 
